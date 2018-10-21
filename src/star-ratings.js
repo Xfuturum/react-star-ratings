@@ -5,7 +5,8 @@ import Star from './star';
 class StarRatings extends React.Component {
   state = {
     highestStarHovered: -Infinity
-  }
+  };
+
   fillId = `starGrad${Math.random().toFixed(15).slice(2)}`;
 
   get starRatingsStyle() {
@@ -35,26 +36,6 @@ class StarRatings extends React.Component {
     };
     return this.props.ignoreInlineStyles ? {} : stopColorStyle;
   }
-
-  get titleText() {
-    const {
-      typeOfWidget,
-      rating: selectedRating
-    } = this.props;
-    const hoveredRating = this.state.highestStarHovered;
-    const currentRating = hoveredRating > 0 ? hoveredRating : selectedRating;
-    // fix it at 2 decimal places and remove trailing 0s
-    let formattedRating = parseFloat(currentRating.toFixed(2)).toString();
-    if (Number.isInteger(currentRating)) {
-      formattedRating = String(currentRating);
-    }
-    let starText = `${typeOfWidget}s`;
-    if (formattedRating === '1') {
-      starText = typeOfWidget;
-    }
-    return `${formattedRating} ${starText}`;
-  }
-
   
   get offsetValue() {
     const rating = this.props.rating;
@@ -154,7 +135,6 @@ class StarRatings extends React.Component {
     return (
       <div
         className="star-ratings"
-        title={this.titleText}
         style={this.starRatingsStyle}
       >
         <svg

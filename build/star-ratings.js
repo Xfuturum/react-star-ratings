@@ -76,7 +76,6 @@ var StarRatings = function (_React$Component) {
         'div',
         {
           className: 'star-ratings',
-          title: this.titleText,
           style: this.starRatingsStyle
         },
         _react2.default.createElement(
@@ -122,26 +121,6 @@ var StarRatings = function (_React$Component) {
         visibility: 'hidden'
       };
       return this.props.ignoreInlineStyles ? {} : starGradientStyle;
-    }
-  }, {
-    key: 'titleText',
-    get: function get() {
-      var _props2 = this.props,
-          typeOfWidget = _props2.typeOfWidget,
-          selectedRating = _props2.rating;
-
-      var hoveredRating = this.state.highestStarHovered;
-      var currentRating = hoveredRating > 0 ? hoveredRating : selectedRating;
-      // fix it at 2 decimal places and remove trailing 0s
-      var formattedRating = parseFloat(currentRating.toFixed(2)).toString();
-      if (Number.isInteger(currentRating)) {
-        formattedRating = String(currentRating);
-      }
-      var starText = typeOfWidget + 's';
-      if (formattedRating === '1') {
-        starText = typeOfWidget;
-      }
-      return formattedRating + ' ' + starText;
     }
   }, {
     key: 'offsetValue',
